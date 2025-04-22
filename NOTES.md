@@ -5,8 +5,9 @@ This document summarizes the discussions and decisions for setting up a PyInfra 
 ## Project Overview
 
 - **Project Type**: PyInfra v3 for home infrastructure management
-- **Package Structure**: uv-managed, with source in the src folder
+- **Package Structure**: uv-managed, with source in the src/home-infra folder
 - **Linting**: Using ruff with `ruff check`
+- **Formatting**: Using ruff with `ruff format`
 
 ## Target Environment
 
