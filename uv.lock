@@ -322,12 +322,20 @@ dev = [
     { name = "pyright" },
 ]
 
+[package.dev-dependencies]
+dev = [
+    { name = "pyright" },
+]
+
 [package.metadata]
 requires-dist = [
     { name = "pyinfra", specifier = ">=3.2" },
     { name = "pyright", marker = "extra == 'dev'", specifier = ">=1.1.353" },
 ]
 provides-extras = ["dev"]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pyright", specifier = ">=1.1.399" }]
 
 [[package]]
 name = "idna"

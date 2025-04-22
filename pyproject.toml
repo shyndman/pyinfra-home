@@ -30,8 +30,13 @@ exclude = [
     "**/node_modules",
     "**/__pycache__",
 ]
+# Virtual environment configuration
+venvPath = "."
+venv = ".venv"
+# Python version and type checking settings
 pythonVersion = "3.11"
 typeCheckingMode = "strict"
+# Diagnostic settings
 reportMissingTypeStubs = "warning"
 reportUnknownMemberType = "warning"
 reportUnknownParameterType = "warning"
@@ -42,6 +47,11 @@ reportUntypedFunctionDecorator = "warning"
 reportMissingTypeArgument = "warning"
 reportInvalidTypeVarUse = "warning"
 reportUnnecessaryTypeIgnoreComment = "information"
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.399",
+]
 
 [project.optional-dependencies]
 dev = [
