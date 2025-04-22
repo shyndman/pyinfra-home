@@ -18,7 +18,7 @@ This document summarizes the discussions and decisions for setting up a PyInfra 
 ## Authentication & First Boot
 
 - **Authentication Method**: SSH keys
-- **First Boot Process**: 
+- **First Boot Process**:
   - Initial access via root password
   - Need to automate:
     - SSH daemon lockdown
@@ -58,7 +58,7 @@ Initial deployment will focus on:
 
 ## Security Requirements
 
-- **Secret Management**: 
+- **Secret Management**:
   - Using 1Password for secrets
   - Will integrate with the 1Password Python SDK
   - References to secrets in code, expanded during deployment
@@ -76,14 +76,14 @@ Initial deployment will focus on:
 
 ## Rollback Strategy
 
-- **Version Control Based**: 
+- **Version Control Based**:
   - Check out previous version of infrastructure code
   - Deploy the previous version
   - System returns to previous state
 
 ## Custom Operations
 
-- **Nala for APT**: 
+- **Nala for APT**:
   - Create custom operations that use nala instead of apt
   - Bootstrap nala with `nala fetch --auto`
   - Implement operations similar to PyInfra's apt module
