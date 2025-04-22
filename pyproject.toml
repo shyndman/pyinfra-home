@@ -25,7 +25,7 @@ build-backend = "hatchling.build"
 packages = ["src/home_infra"]
 
 [tool.pyright]
-include = ["src"]
+include = ["src", "tests"]
 exclude = [
     "**/node_modules",
     "**/__pycache__",
@@ -51,9 +51,66 @@ reportUnnecessaryTypeIgnoreComment = "information"
 [dependency-groups]
 dev = [
     "pyright>=1.1.399",
+    "pytest>=8.3.5",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.14.0",
+    "pytest-xdist>=3.6.1",
 ]
 
-[project.optional-dependencies]
-dev = [
-    "pyright>=1.1.353",
+[tool.pytest.ini_options]
+# Test discovery settings
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+
+# Display settings
+addopts = "-v"
+
+# Test execution settings
+log_cli = true  # Enable live logging
+log_cli_level = "INFO"  # Set log level for CLI output
+
+# Test selection settings
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
 ]
+
+# Test output settings
+junit_family = "xunit2"  # Use xunit2 format for JUnit XML files
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "tests/*",
+    "*/__pycache__/*",
+    "*/site-packages/*",
+    "*/.venv/*",
+]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    # Don't complain about missing debug-only code:
+    "def __repr__",
+    "if self\\.debug",
+
+    # Don't complain if tests don't hit defensive assertion code:
+    "raise AssertionError",
+    "raise NotImplementedError",
+
+    # Don't complain if non-runnable code isn't run:
+    "if 0:",
+    "if __name__ == .__main__.:",
+
+    # Don't complain about abstract methods, they aren't run:
+    "@(abc\\.)?abstractmethod",
+
+    # Don't complain about pragma no cover lines
+    "pragma: no cover",
+]
+ignore_errors = true
+
+[tool.coverage.html]
+directory = "coverage_html_report"

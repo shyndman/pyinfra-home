@@ -1,0 +1,11 @@
+{
+  "args": [],
+  "kwargs": {
+    "auto": true,
+    "fetches": 5
+  },
+  "facts": {},
+  "commands": [
+    "nala fetch --auto --fetches 5"
+  ]
+}

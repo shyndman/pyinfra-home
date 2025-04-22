@@ -8,6 +8,9 @@ This document summarizes the discussions and decisions for setting up a PyInfra 
 - **Package Structure**: uv-managed, with source in the src/home-infra folder
 - **Linting**: Using ruff with `ruff check`
 - **Formatting**: Using ruff with `ruff format`
+- **Type Checking**: Using pyright with strict mode enabled
+  - Configuration in pyproject.toml
+  - Virtual environment integration enabled for better type checking
 
 ## Target Environment
 
@@ -73,6 +76,11 @@ Initial deployment will focus on:
 
 - **Staging Environment**: Docker containers
 - **Workflow**: Test deployments in containers before applying to real servers
+- **Unit Testing**:
+  - Test operations using a similar approach to pyinfra's test framework
+  - Create JSON test files that define input arguments, mocked facts, and expected commands
+  - Use pytest to run the tests
+  - Mock the pyinfra State and Host classes to avoid dependencies on the actual pyinfra runtime
 
 ## Rollback Strategy
 
@@ -87,6 +95,19 @@ Initial deployment will focus on:
   - Create custom operations that use nala instead of apt
   - Bootstrap nala with `nala fetch --auto`
   - Implement operations similar to PyInfra's apt module
+
+## Test Utilities
+
+- **PyInfra Test Stubs**:
+  - Created a library of stub classes for testing pyinfra operations
+  - Includes stubs for State, Host, and other pyinfra classes
+  - Allows testing operations without depending on the actual pyinfra runtime
+  - Properly typed for use with pyright
+- **Test Structure**:
+  - Tests organized by operation in JSON files
+  - Each test defines input arguments, mocked facts, and expected commands
+  - Tests run using pytest
+  - Test utilities handle parsing and comparing commands
 
 ## Integration with Other Tools
 
@@ -116,7 +137,15 @@ home-infra/
 │   ├── sshd_config.j2     # SSH daemon configuration
 │   ├── zshrc.j2           # ZSH configuration
 │   └── docker-compose.j2.yml # Docker compose template
+├── tests/
+│   ├── operations/        # Tests for custom operations
+│   │   ├── nala.fetch/    # Tests for nala.fetch operation
+│   │   ├── nala.update/   # Tests for nala.update operation
+│   │   └── nala.packages/ # Tests for nala.packages operation
+│   ├── pyinfra_test_utils.py # Test utilities for pyinfra operations
+│   └── test_operations.py # Test runner for operations
 ├── deploy.py              # Main deployment entry point
+├── pyproject.toml         # Project configuration including pyright settings
 └── requirements.txt       # Python dependencies
 ```
 

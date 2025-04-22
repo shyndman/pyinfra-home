@@ -1,0 +1,14 @@
+{
+  "args": ["git"],
+  "kwargs": {
+    "present": false
+  },
+  "facts": {
+    "DebPackages": {
+      "git": "1:2.34.1-1ubuntu1.10"
+    }
+  },
+  "commands": [
+    "nala remove -y git"
+  ]
+}

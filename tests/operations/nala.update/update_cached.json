@@ -1,0 +1,17 @@
+{
+  "args": [],
+  "kwargs": {
+    "cache_time": 3600
+  },
+  "facts": {
+    "File:/var/lib/apt/periodic/update-success-stamp": {
+      "mtime": 0
+    },
+    "Date": 3700
+  },
+  "commands": [
+    "nala update -y",
+    "mkdir -p /var/lib/apt/periodic",
+    "touch /var/lib/apt/periodic/update-success-stamp"
+  ]
+}

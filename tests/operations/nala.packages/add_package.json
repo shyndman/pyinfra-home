@@ -1,0 +1,10 @@
+{
+  "args": ["git"],
+  "kwargs": {},
+  "facts": {
+    "DebPackages": {}
+  },
+  "commands": [
+    "nala install -y git"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "args": [],
+  "kwargs": {
+    "auto": true,
+    "country": "CA",
+    "fetches": 10
+  },
+  "facts": {},
+  "commands": [
+    "nala fetch --auto -c CA --fetches 10"
+  ]
+}

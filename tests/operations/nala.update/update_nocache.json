@@ -1,0 +1,8 @@
+{
+  "args": [],
+  "kwargs": {},
+  "facts": {},
+  "commands": [
+    "nala update -y"
+  ]
+}
