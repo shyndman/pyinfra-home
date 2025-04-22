@@ -59,9 +59,7 @@ class PyinfraTestState:
         """Mock method that returns a host meta object."""
         return PyinfraTestHostMeta()
 
-    def set_op_data_for_host(
-        self, host: "PyinfraTestHost", op_hash: str, op_data: Any
-    ) -> None:
+    def set_op_data_for_host(self, host: "PyinfraTestHost", op_hash: str, op_data: Any) -> None:
         """Mock method that does nothing."""
         pass
 
@@ -140,8 +138,6 @@ def assert_commands(commands: List[str], wanted_commands: List[str]) -> None:
 class YamlTest(type):
     """Metaclass that creates test methods from YAML files."""
 
-    def __new__(
-        mcs, name: str, bases: Tuple[Type[Any], ...], attrs: Dict[str, Any]
-    ) -> Type[Any]:
+    def __new__(mcs, name: str, bases: Tuple[Type[Any], ...], attrs: Dict[str, Any]) -> Type[Any]:
         cls = super(YamlTest, mcs).__new__(mcs, name, bases, attrs)
         return cls

@@ -11,9 +11,9 @@ for the pyinfra API. These warnings do not affect functionality.
 
 from typing import Generator, List, Optional, Union
 
+from pyinfra.api.host import Host
 from pyinfra.api.operation import operation
 from pyinfra.api.state import State
-from pyinfra.api.host import Host
 from pyinfra.facts.apt import AptSources, SimulateOperationWillChange
 from pyinfra.facts.deb import DebPackage, DebPackages
 from pyinfra.facts.files import File
@@ -208,9 +208,7 @@ def packages(
 
 
 @operation()
-def deb(
-    state: State, host: Host, src: str, present: bool = True
-) -> Generator[str, None, None]:
+def deb(state: State, host: Host, src: str, present: bool = True) -> Generator[str, None, None]:
     """
     Add/remove .deb file packages.
 
@@ -243,10 +241,7 @@ def deb(
     install = present
     if info and present:
         current_packages: dict[str, str] = host.get_fact(DebPackages) or {}
-        if (
-            info["name"] in current_packages
-            and current_packages[info["name"]] == info["version"]
-        ):
+        if info["name"] in current_packages and current_packages[info["name"]] == info["version"]:
             install = False
 
     # Install the package with nala -f

@@ -4,19 +4,20 @@ Tests for home_infra operations.
 
 import json
 import os
-import pytest
 from typing import Any, Callable, cast
 from unittest import TestCase
 
+import pytest
 from pyinfra.context import ctx_host, ctx_state
+
 from home_infra.operations import nala
+
 from .pyinfra_test_utils import (
     PyinfraTestState,
+    assert_commands,
     create_host,
     parse_commands,
-    assert_commands,
 )
-
 
 # These functions are now imported from pyinfra_test_utils
 
@@ -32,9 +33,7 @@ class TestNalaOperation(TestCase):
         self.state = PyinfraTestState()
         # Extract the operation name from the class name (e.g., TestNalaFetch -> fetch)
         self.operation_name = self.__class__.__name__.replace("TestNala", "").lower()
-        self.test_dir = os.path.join(
-            "tests", "operations", f"nala.{self.operation_name}"
-        )
+        self.test_dir = os.path.join("tests", "operations", f"nala.{self.operation_name}")
 
     @pytest.fixture(autouse=True)
     def _setup_state(self, pyinfra_state: PyinfraTestState) -> None:

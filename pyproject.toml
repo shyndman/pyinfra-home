@@ -55,6 +55,7 @@ dev = [
     "pytest-cov>=4.1.0",
     "pytest-mock>=3.14.0",
     "pytest-xdist>=3.6.1",
+    "ruff>=0.3.0",
 ]
 
 [tool.pytest.ini_options]
@@ -114,3 +115,19 @@ ignore_errors = true
 
 [tool.coverage.html]
 directory = "coverage_html_report"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = []
+
+[tool.ruff.lint.isort]
+known-first-party = ["home_infra"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"

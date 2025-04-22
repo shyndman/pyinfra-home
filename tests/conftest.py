@@ -4,10 +4,11 @@ Configuration and fixtures for pytest.
 This module contains configuration and fixtures that are available to all tests.
 """
 
-import pytest
-from typing import Dict, Any, Generator
+from typing import Any, Dict, Generator
 
-from .pyinfra_test_utils import PyinfraTestState, PyinfraTestHost, FactsDict
+import pytest
+
+from .pyinfra_test_utils import FactsDict, PyinfraTestHost, PyinfraTestState
 
 
 @pytest.fixture
