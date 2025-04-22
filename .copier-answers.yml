@@ -1,0 +1,10 @@
+# Changes here will be overwritten by Copier
+_commit: v0.0.1
+_src_path: .
+github_user: shyndman
+module_name: home_infra
+package_name: home-infra
+project_name: Home PyInfra
+python_version: '3.11'
+user_email: scotty.hyndman@gmail.com
+user_name: Scott Hyndman

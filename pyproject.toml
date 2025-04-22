@@ -1,0 +1,20 @@
+[project]
+name = "home_infra"
+version = "0.0.0"
+description = "…"
+readme = "README.md"
+authors = [{name = "Scott Hyndman", email = "scotty.hyndman@gmail.com"}]
+requires-python = ">=3.11"
+dependencies = []
+license = {text = "MIT"}
+
+[project.urls]
+repository = "https://github.com/shyndman/home_infra"
+"Bug Tracker" = "https://github.com/shyndman/home_infra/issues"
+
+[project.scripts]
+home_infra = "home_infra:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
